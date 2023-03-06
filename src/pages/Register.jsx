@@ -2,7 +2,7 @@ import "../App.css";
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app, db } from "../firebase";
+import { app } from "../firebase";
 
 const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
