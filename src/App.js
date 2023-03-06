@@ -1,20 +1,13 @@
-import SignupPage from './pages/Signup';
-import SigninPage from './pages/Signin';
-import Navbar from './pages/Navbar';
-import { ProSidebarProvider } from 'react-pro-sidebar';
+
 import './App.css';
-
-
+import Register from './pages/Register';
 
 function App() {
 
+
   return (
     <div className='App'>
-      
-      <ProSidebarProvider>
-        <Navbar />
-      </ProSidebarProvider>
-
+      <Register />
     </div>
   );
 }
