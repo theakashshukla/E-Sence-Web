@@ -129,7 +129,7 @@ const Register = () => {
           
           Already have an account?
           <a href="http://localhost:3000/?" className="font-medium text-indigo-600 hover:underline">
-            Sign in
+             Login
           </a>
         </p>
       </div>
