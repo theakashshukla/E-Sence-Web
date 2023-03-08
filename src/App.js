@@ -1,15 +1,13 @@
-import SignupPage from './pages/Signup';
-import SigninPage from './pages/Signin';
-import './App.css';
-
 
 function App() {
 
+ 
   return (
-    <div className='App'>
-      <SignupPage />
-      <SigninPage />
+    <div className="app">
+      
+      <h1>hi</h1>
     </div>
   );
 }
+
 export default App;
