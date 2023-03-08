@@ -1,6 +1,6 @@
 
 import './App.css';
-import ForgetPassword from './pages/ForgetPassword';
+
 
 
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='App'>
 
-      <ForgetPassword />
+      <h1> Hello</h1>
 
     </div>
   );
