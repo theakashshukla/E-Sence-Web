@@ -6,7 +6,7 @@ import { app } from "../firebase";
 
 const auth = getAuth(app);
 
-const SignupPage = () => {
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -180,4 +180,4 @@ const SignupPage = () => {
     </div>
   );
 };
-export default SignupPage;
+export default RegisterPage;
