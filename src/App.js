@@ -1,16 +1,15 @@
-import Forms from './pages/gittt/Forms'
+import SigninPage from "./pages/Signin";
+import SignupPage from "./pages/Signup";
 
-function App() {
+export default function App() {
 
  
   return (
     <div className="app">
+      <SignupPage/>
+      <SigninPage/>
+      <h1>Hi</h1>
       
-      <Forms/> 
-      
-      ,<h1>hi</h1>
     </div>
   );
 }
-
-export default App;
