@@ -1,4 +1,4 @@
-import Register from './pages/Register'
+import Forms from './pages/gittt/Forms'
 
 function App() {
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="app">
       
-      < Register />  
+      <Forms/> 
       
       ,<h1>hi</h1>
     </div>
