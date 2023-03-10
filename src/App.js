@@ -1,21 +1,15 @@
+import SigninPage from "./pages/Signin";
+import SignupPage from "./pages/Signup";
 
-import React from 'react';
-import Student from './components/Student';
+export default function App() {
 
-
-function App() {
-
-
+ 
   return (
     <div className="app">
-
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">User Information</h1>
-        <Student />
-
-      </div>
+      <SignupPage/>
+      <SigninPage/>
+      <h1>Hi</h1>
+      
     </div>
   );
 }
-
-export default App;
