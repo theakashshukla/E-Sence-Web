@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import { useEffect, useState } from "react";
 
 function StudentList() {
@@ -61,7 +61,7 @@ function StudentList() {
                           <div className="flex-shrink-0 h-10 w-10">
                             <img
                               className="h-10 w-10 rounded-full"
-                              src={user.image}
+                              src={user.imageUrl}
                               alt=""
                             />
                           </div>
@@ -110,9 +110,7 @@ function StudentList() {
           </div>
         </div>
       </div>
-      
     </div>
-    
   );
 }
 export default StudentList;
