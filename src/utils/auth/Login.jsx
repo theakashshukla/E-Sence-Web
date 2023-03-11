@@ -20,7 +20,7 @@ const LoginPage = () => {
     <div>
       <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-          <h1 class="font-bold text-center text-2xl mb-5">Your Logo</h1>
+          <h1 class="font-bold text-center text-2xl mb-5">E-Sence</h1>
           <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
             <div class="px-5 py-7">
               <label class="font-semibold text-sm text-gray-600 pb-1 block">
@@ -155,28 +155,7 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* <div className="signin-page">
-        <h1>Sign In Page</h1>
-        <label>Enter Your Email</label>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          type="email"
-          required
-          placeholder="Email"
-        />
-        <label>Enter Your Password</label>
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          type="password"
-          required
-          placeholder="Password"
-        />
-        <button onClick={signinUser}>Login</button>
-      </div> */}
+      </div>        
     </div>
   );
 };
