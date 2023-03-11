@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 
 module.exports = {
   plugins: [
@@ -9,11 +8,11 @@ module.exports = {
     }),
   ],
 };
-=======
+
 module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
 }
->>>>>>> Stashed changes
+
