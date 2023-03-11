@@ -1,8 +1,8 @@
-import "../App.css";
+
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebase";
+import { app } from "../../firebase";
 
 const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
@@ -17,7 +17,6 @@ const Register = () => {
   const createUser = () => {
     createUserWithEmailAndPassword(auth, email, password).then((value) =>
       alert("Successfully created user")
-      
     );
   };
 
@@ -26,10 +25,12 @@ const Register = () => {
 
     try {
       const docRef = await addDoc(collection(dab, "users"), {
-        email,first,last,password
-     
+        email,
+        first,
+        last,
+        password,
       });
-    
+
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -51,8 +52,8 @@ const Register = () => {
               Firstname
             </label>
             <input
-             onChange={(e) => setFirstName(e.target.value)}
-             value={first}
+              onChange={(e) => setFirstName(e.target.value)}
+              value={first}
               type="Text"
               required
               placeholder="First Name"
@@ -67,8 +68,8 @@ const Register = () => {
               Lastname
             </label>
             <input
-             onChange={(e) => setLastName(e.target.value)}
-             value={last}
+              onChange={(e) => setLastName(e.target.value)}
+              value={last}
               type="Text"
               required
               placeholder="Last Name"
@@ -126,10 +127,12 @@ const Register = () => {
         </form>
 
         <p className="mt-8 text-xs font-light text-center text-gray-700">
-          
           Already have an account?
-          <a href="http://localhost:3000/?" className="font-medium text-indigo-600 hover:underline">
-             Login
+          <a
+            href="http://localhost:3000/?"
+            className="font-medium text-indigo-600 hover:underline"
+          >
+            Login
           </a>
         </p>
       </div>

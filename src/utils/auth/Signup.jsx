@@ -1,19 +1,19 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { app } from "../firebase";
+import { app } from "../../firebase";
 
 /* auth  */
 
 const auth = getAuth(app);
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((value) => console.log("Successfully signed in user"))
-      .catch((error) => console.log(error));
+  const createUser = () => {
+    createUserWithEmailAndPassword(auth, email, password).then((value) =>
+      alert("Successfully created user")
+    );
   };
 
   return (
@@ -46,10 +46,10 @@ const LoginPage = () => {
                 class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
               />
               <button
-                onClick={loginUser}
+                onClick={createUser}
                 class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
               >
-                <span class="inline-block mr-2">Login</span>
+                <span class="inline-block mr-2">Register</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -157,9 +157,9 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* <div className="signin-page">
-        <h1>Sign In Page</h1>
-        <label>Enter Your Email</label>
+      {/* <div className="signup-page">
+        <h1>Sign Up Page</h1>
+        <label>Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
           value={email}
@@ -167,7 +167,7 @@ const LoginPage = () => {
           required
           placeholder="Email"
         />
-        <label>Enter Your Password</label>
+        <label>Password</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           value={password}
@@ -175,9 +175,9 @@ const LoginPage = () => {
           required
           placeholder="Password"
         />
-        <button onClick={signinUser}>Login</button>
+        <button onClick={createUser}>SignUp</button>
       </div> */}
     </div>
   );
 };
-export default LoginPage;
+export default RegisterPage;

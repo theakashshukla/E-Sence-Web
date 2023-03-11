@@ -1,21 +1,26 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/Login";
-import RegisterPage from './pages/Signup'
+import Dashboard from "./pages/Dashboard";
+import RegisterPage from "./utils/auth/Register";
+// import View from "./utils/auth/AuthView";
+import StudentList from "./utils/student/StudentListView";
 
+import LoginPage from "./utils/auth/Login";
 
 
 export default function App() {
+
+
   return (
     <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/register" element={<RegisterPage />} />
-           <Route path="/login" element={<LoginPage />} />
-            
-      
-          
-        </Routes>
-      </BrowserRouter>
+      <Dashboard />
+      <LoginPage />
+      <RegisterPage />
+      <StudentList />
+      {/* <View /> */}
+
+
+
+
+
     </div>
   );
 }
