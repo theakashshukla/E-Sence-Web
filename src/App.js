@@ -17,6 +17,7 @@ export default function App() {
   useEffect (() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log("Hello", user)
         setUser(user);
       } else {
         setUser(null);
@@ -42,6 +43,7 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="student" element={<StudentList />} />
             <Route path="user" element={<UserProfile />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
           
         </Routes>
