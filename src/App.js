@@ -45,7 +45,6 @@ export default function App() {
             <Route path="user" element={<UserProfile />} />
             <Route path="register" element={<RegisterPage />} />
           </Route>
-          
         </Routes>
       </Router>
     </div>
