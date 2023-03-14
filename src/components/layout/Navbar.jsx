@@ -6,19 +6,19 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const user = {
   name: "Akash",
-  email: "tom@example.com",
+  email: "User@test.com",
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Dashboard", href: "/", current: true },
-  { name: "Team", href: "/login", current: false },
-  { name: "Projects", href: "/register", current: false },
-  { name: "Students", href: "/student", current: false },
-  { name: "Reports", href: "/report", current: false },
+  { name: "Dashboard", href:"/", current: true },
+  { name: "Team", href:"/login", current: false },
+  { name: "Projects", href:"/register", current: false },
+  { name: "Students", href:"/student", current: false },
+  { name: "Reports", href:"/report", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
+  { name: "Your Profile", href: "user" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ];

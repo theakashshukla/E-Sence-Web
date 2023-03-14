@@ -1,10 +1,16 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { app } from "../../firebase";
 
 /* auth  */
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +19,12 @@ const RegisterPage = () => {
   const createUser = () => {
     createUserWithEmailAndPassword(auth, email, password).then((value) =>
       alert("Successfully created user")
+    );
+  };
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider).then((value) =>
+      alert("Successfully signed in with Google")
     );
   };
 
@@ -86,6 +98,7 @@ const RegisterPage = () => {
                       MailUp
                     </button>
                     <button
+                      onClick={signInWithGoogle}
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
@@ -169,7 +182,6 @@ const RegisterPage = () => {
           </div>
 
           {/* Content End Here */}
-         
         </div>
       </main>
 

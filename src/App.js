@@ -5,11 +5,34 @@ import RegisterPage from "./utils/auth/Register";
 import StudentList from "./utils/student/StudentListView";
 import LoginPage from "./utils/auth/Login";
 import Dashboard from './pages/Dashboard';
+import { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import UserProfile from './components/UserProfile';
 
+const auth = getAuth();
 
 export default function App() {
+  const [user, setUser] = useState(null);
 
+  useEffect (() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Hello", user)
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
 
+  if (user === null) {
+    return (
+      <div className="app">
+        <LoginPage />
+        <RegisterPage />
+      </div>  
+    );
+  }
   return (
     <div className="app">
 
@@ -17,12 +40,11 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />} >
-            <Route index element={<Dashboard />} />
-            <Route path="student" activeClassName="active" element={<StudentList />} />
-            <Route path="register" activeClassName="active" element={<RegisterPage />} />
-            <Route path="login" activeClassName="active" element={<LoginPage />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="student" element={<StudentList />} />
+            <Route index element={<UserProfile />} />
+            <Route path="register" element={<RegisterPage />} />
           </Route>
-          
         </Routes>
       </Router>
     </div>
