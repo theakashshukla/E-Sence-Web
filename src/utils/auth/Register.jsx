@@ -3,11 +3,12 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendEmailVerification,
 } from "firebase/auth";
 import React, { useState } from "react";
 import { app } from "../../firebase";
 
-/* auth  */
+
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -16,10 +17,29 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const createUser = () => {
-    createUserWithEmailAndPassword(auth, email, password).then((value) =>
-      alert("Successfully created user")
-    );
+  const signOut = () => {
+    auth
+      .signOut()
+  };
+  
+  const registerUser = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await sendEmailVerification(auth.currentUser);
+      alert("Successfully created user and sent email verification");
+      const user = userCredential.user;
+      if (!user.emailVerified) {
+        // User is not verified, show error message and sign out the user
+        signOut(auth);
+        alert("Please verify your email before logging in.");
+      }
+    } catch (error) {
+      alert(`Error creating user: ${error.message}`);
+    }
   };
 
   const signInWithGoogle = () => {
@@ -69,7 +89,7 @@ const RegisterPage = () => {
                     class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                   />
                   <button
-                    onClick={createUser}
+                    onClick={registerUser}
                     class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                   >
                     <span class="inline-block mr-2">Register</span>
