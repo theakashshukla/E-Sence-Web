@@ -40,9 +40,9 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />} >
-            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="student" element={<StudentList />} />
-            <Route path="user" element={<UserProfile />} />
+            <Route index element={<UserProfile />} />
             <Route path="register" element={<RegisterPage />} />
           </Route>
         </Routes>
