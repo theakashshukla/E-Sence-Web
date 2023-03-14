@@ -2,18 +2,44 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { app } from "../../firebase";
 
-/* auth  */
-
 const auth = getAuth(app);
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((value) => console.log("Successfully signed in user"))
-      .catch((error) => console.log(error));
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+  
+  const loginUser = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      if (!user.emailVerified) {
+        // User is not verified, show error message and sign out the user
+        signOut(auth);
+        alert("Please verify your email before logging in.");
+      } else {
+        // User is verified, proceed with sign in
+        alert("Successfully logged in");
+      }
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    }
   };
 
   return (

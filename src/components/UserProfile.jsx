@@ -3,6 +3,7 @@ import { getAuth } from 'firebase/auth';
 export default function UserProfile() {
 
 
+
   const auth = getAuth();
   const handleLogout = () => {
     auth.signOut().then(() => {
@@ -11,6 +12,8 @@ export default function UserProfile() {
       console.log('An error happened.');
     });
   };
+
+
 
   return (
     <div>
