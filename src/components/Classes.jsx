@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Classes() {
   return (
     <div className="lg:flex lg:items-center lg:justify-between">
       <div className="min-w-0 flex-1">
@@ -113,7 +113,7 @@ export default function Example() {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="#"
+                    href="/"
                     className={classNames(
                       active ? "bg-gray-100" : "",
                       "block px-4 py-2 text-sm text-gray-700"
@@ -126,7 +126,7 @@ export default function Example() {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="#"
+                    href="/"
                     className={classNames(
                       active ? "bg-gray-100" : "",
                       "block px-4 py-2 text-sm text-gray-700"

@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-
-import RegisterPage from "./utils/auth/Register";
-import StudentList from "./utils/student/StudentListView";
-import LoginPage from "./utils/auth/Login";
-import Dashboard from './pages/Dashboard';
 import { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Navbar from './components/layout/Navbar';
+import Dashboard from './pages/Dashboard';
+import LoginPage from "./utils/auth/Login";
+import RegisterPage from "./utils/auth/Register";
+import StudentList from "./utils/student/StudentListView";
 import UserProfile from './components/UserProfile';
+import Classes from './components/Classes';
+import Report from './components/Report';
 
 const auth = getAuth();
 
 export default function App() {
   const [user, setUser] = useState(null);
 
-  useEffect (() => {
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("Hello", user)
@@ -30,7 +31,7 @@ export default function App() {
       <div className="app">
         <LoginPage />
         <RegisterPage />
-      </div>  
+      </div>
     );
   }
   return (
@@ -38,14 +39,15 @@ export default function App() {
 
 
       <Router>
-        <Routes>
-          <Route path="/" element={<Layout />} >
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="student" element={<StudentList />} />
-            <Route index element={<UserProfile />} />
-            <Route path="register" element={<RegisterPage />} />
-          </Route>
-        </Routes>
+        <Navbar>
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="/User" element={<UserProfile />} />
+            <Route path="/Student" element={<StudentList />} />
+            <Route path="/Report" element={<Report />} />
+            <Route path="/Classes" element={<Classes />} />
+          </Routes>
+        </Navbar>
       </Router>
     </div>
   );
