@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import UserProfile from './components/UserProfile';
+import ForgotPasswordModal from './utils/auth/ForgetPassword';
 
 const auth = getAuth();
 
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="student" element={<StudentList />} />
             <Route index element={<UserProfile />} />
             <Route path="register" element={<RegisterPage />} />
+            <Route path="forget" element={<ForgotPasswordModal />} />
           </Route>
         </Routes>
       </Router>
