@@ -30,8 +30,12 @@ export default function App() {
   if (user === null) {
     return (
       <div className="app">
-        <LoginPage />
-        <RegisterPage />
+        <Router>
+          <Routes>
+            <Route index element={<LoginPage />} />
+            <Route path="/Register" element={<RegisterPage />} />
+          </Routes>
+        </Router>
       </div>
     );
   }

@@ -104,25 +104,25 @@ const LoginPage = () => {
                   </button>
                 </div>
                 <div class="p-5">
-                  <div class="grid grid-cols-3 gap-1">
-                    <button
+                  <div class="grid grid-cols-1 gap-1">
+                    {/* <button
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
                       MailUp
-                    </button>
+                    </button> */}
                     <button
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
                       Google
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
                       Github
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div class="py-5">

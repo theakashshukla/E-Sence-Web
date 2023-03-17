@@ -110,13 +110,13 @@ const RegisterPage = () => {
                   </button>
                 </div>
                 <div class="p-5">
-                  <div class="grid grid-cols-3 gap-1">
-                    <button
+                  <div class="grid grid-cols-1 gap-1">
+                    {/* <button
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
                       MailUp
-                    </button>
+                    </button> */}
                     <button
                       onClick={signInWithGoogle}
                       type="button"
@@ -124,12 +124,12 @@ const RegisterPage = () => {
                     >
                       Google
                     </button>
-                    <button
+                    {/* <button
                       type="button"
                       class="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
                     >
                       Github
-                    </button>
+                    </button> */}
                   </div>
                 </div>
                 <div class="py-5">
@@ -155,6 +155,7 @@ const RegisterPage = () => {
                     </div>
                     <div class="text-center sm:text-right whitespace-nowrap">
                       <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                        <a href="/Login">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -169,6 +170,7 @@ const RegisterPage = () => {
                             d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
                           />
                         </svg>
+                        </a>
                         <span class="inline-block ml-1">Help</span>
                       </button>
                     </div>
@@ -179,6 +181,7 @@ const RegisterPage = () => {
                 <div class="grid grid-cols-2 gap-1">
                   <div class="text-center sm:text-left whitespace-nowrap">
                     <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                      <a href="\]\re[w]\]\trp;;t/">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -194,6 +197,7 @@ const RegisterPage = () => {
                         />
                       </svg>
                       <span class="inline-block ml-1">Back to Login</span>
+                      </a>
                     </button>
                   </div>
                 </div>
