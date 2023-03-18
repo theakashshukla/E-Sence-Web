@@ -5,9 +5,7 @@ import { getAuth } from "firebase/auth";
 
 export default function Example() {
   const [open, setOpen] = useState(true);
-
   const cancelButtonRef = useRef(null);
-
 
   const auth = getAuth();
   const handleLogout = () => {

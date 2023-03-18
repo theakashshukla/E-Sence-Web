@@ -1,7 +1,8 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
+const db = getFirestore();
+ 
 function StudentList() {
   const [users, setUsers] = useState([]);
 
