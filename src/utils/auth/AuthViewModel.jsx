@@ -1,3 +1,20 @@
+import { loginUser, signOut } from "./AuthModal";
+
+export const LoginViewModel = {
+  signIn: async (email, password) => {
+    try {
+      const isVerified = await loginUser(email, password);
+      if (!isVerified) {
+        // User is not verified, show error message and sign out the user
+        signOut();
+        throw new Error("Email is not verified.");
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+};
+
 // import { useState } from "react";
 // import { auth, provider } from "firebase";
 

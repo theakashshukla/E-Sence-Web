@@ -1,46 +1,55 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { app } from "../../firebase";
 import React, { useState } from "react";
-import { app } from "../../firebase";
+import { LoginViewModel } from "./AuthViewModel";
 
-const auth = getAuth(app);
+
 
 const LoginPage = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const signOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  };
+ const loginUser = async (event) => {
+   event.preventDefault();
+   try {
+     await LoginViewModel.signIn(email, password);
+   } catch (error) {
+     setErrorMessage(error.message);
+   }
+ };
+
+  // const signOut = () => {
+  //   auth
+  //     .signOut()
+  //     .then(() => {
+  //       // Sign-out successful.
+  //     })
+  //     .catch((error) => {
+  //       // An error happened.
+  //     });
+  // };
   
-  const loginUser = async () => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      if (!user.emailVerified) {
-        // User is not verified, show error message and sign out the user
-        signOut(auth);
-        alert("Please verify your email before logging in.");
-      } else {
-        // User is verified, proceed with sign in
-        alert("Successfully logged in");
-      }
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-    }
-  };
+  
+  // const loginUser = async () => {
+  //   try {
+  //     const userCredential = await signInWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password
+  //     );
+  //     const user = userCredential.user;
+  //     if (!user.emailVerified) {
+  //       // User is not verified, show error message and sign out the user
+  //       signOut(auth);
+  //     } 
+  //   } catch (error) {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     console.log(errorCode, errorMessage);
+  //   }
+  // };
 
   return (
     <div>
@@ -54,6 +63,7 @@ const LoginPage = () => {
       <main>
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
           {/* Conntent Start Here */}
+          {errorMessage && <div>{errorMessage}</div>}
 
           <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
             <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">

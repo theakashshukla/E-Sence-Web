@@ -36,7 +36,7 @@ const RegisterPage = () => {
         // User is not verified, show error message and sign out the user
         signOut(auth);
         alert("Please verify your email before logging in.");
-      }
+      } 
     } catch (error) {
       alert(`Error creating user: ${error.message}`);
     }
