@@ -17,7 +17,10 @@
 //     const errorMessage = error.message;
 //     throw new Error(`${errorCode}: ${errorMessage}`);
 //   }
+
 // };
+
+
 
 // export const signOut = () => {
 //   auth
