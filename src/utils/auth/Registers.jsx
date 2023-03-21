@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
 
 const auth = getAuth(app);
-// Initialize Cloud Firestore and get a reference to the service
+//Initialize Cloud Firestore and get a reference to the service
 const dab = getFirestore(app);
 
 const Register = () => {
