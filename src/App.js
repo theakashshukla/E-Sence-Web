@@ -9,6 +9,7 @@ import StudentList from "./utils/student/StudentListView";
 import UserProfile from './components/UserProfile';
 import Classes from './components/Classes';
 import Report from './components/Report';
+import LogOutModal from './utils/auth/LogOutModal';
 
 const auth = getAuth();
 
@@ -29,8 +30,12 @@ export default function App() {
   if (user === null) {
     return (
       <div className="app">
-        <LoginPage />
-        <RegisterPage />
+        <Router>
+          <Routes>
+            <Route index element={<LoginPage />} />
+            <Route path="/Register" element={<RegisterPage />} />
+          </Routes>
+        </Router>
       </div>
     );
   }
@@ -46,6 +51,7 @@ export default function App() {
             <Route path="/Student" element={<StudentList />} />
             <Route path="/Report" element={<Report />} />
             <Route path="/Classes" element={<Classes />} />
+            <Route path="/LogOut" element={<LogOutModal />} />
           </Routes>
         </Navbar>
       </Router>

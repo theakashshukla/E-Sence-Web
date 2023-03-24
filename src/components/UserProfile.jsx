@@ -1,19 +1,52 @@
-import { getAuth } from 'firebase/auth';
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import { app } from "../firebase";
+
+const db = getFirestore(app);
 
 export default function UserProfile() {
+  const [name, setName] = useState("");
+  const [enrollment, setEnrollment] = useState("");
+  const [departmentCode, setDepartmentCode] = useState("");
+  const [departmentName, setDepartmentName] = useState("");
+  const [course, setCourse] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        name,
+        enrollment,
+        department: {
+          code: departmentCode,
+          name: departmentName,
+          course,
+        },
+        email,
+        phone,
+      });
 
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
 
   const auth = getAuth();
   const handleLogout = () => {
-    auth.signOut().then(() => {
-      console.log('Sign-out successful.');
-    }).catch((error) => {
-      console.log('An error happened.');
-    });
+    auth
+      .signOut()
+      .then(() => {
+        console.log("Sign-out successful.");
+      })
+      .catch((error) => {
+        console.log("An error happened.");
+      });
   };
-
-
 
   return (
     <div>
@@ -49,11 +82,11 @@ export default function UserProfile() {
                           AX1020999022
                         </span>
                         <input
+                          onChange={(e) => setEnrollment(e.target.value)}
+                          value={enrollment}
                           type="text"
-                          name="company-website"
-                          id="company-website"
                           className="block w-full flex-1 rounded-none rounded-r-md border-0 py-2.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          placeholder="www.example.com"
+                          placeholder="EnrollMent Number"
                         />
                       </div>
                     </div>
@@ -64,15 +97,16 @@ export default function UserProfile() {
                       htmlFor="about"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      About
+                      Course
                     </label>
                     <div className="mt-2">
-                      <textarea
-                        id="about"
-                        name="about"
-                        rows={3}
+                      <input
+                        type="text"
+                        onChange={(e) => setCourse(e.target.value)}
+                        value={course}
+                      
                         className="mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
-                        placeholder="you@example.com"
+                        placeholder="Course"
                         defaultValue={""}
                       />
                     </div>
@@ -188,10 +222,12 @@ export default function UserProfile() {
                         htmlFor="first-name"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        First name
+                        Phone
                       </label>
                       <input
-                        type="text"
+                        onChange={(e) => setPhone(e.target.value)}
+                        value={phone}
+                        type="phone"
                         name="first-name"
                         id="first-name"
                         autoComplete="given-name"
@@ -201,15 +237,17 @@ export default function UserProfile() {
 
                     <div className="col-span-6 sm:col-span-3">
                       <label
-                        htmlFor="last-name"
+                        htmlFor="name"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Last name
+                        Name
                       </label>
-                      <input
+                      <input 
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
                         type="text"
-                        name="last-name"
-                        id="last-name"
+                        name="name"
+                        id="name"
                         autoComplete="family-name"
                         className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -223,6 +261,8 @@ export default function UserProfile() {
                         Email address
                       </label>
                       <input
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
                         type="text"
                         name="email-address"
                         id="email-address"
@@ -255,9 +295,11 @@ export default function UserProfile() {
                         htmlFor="street-address"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Street address
+                        Department
                       </label>
                       <input
+                        onChange={(e) => setDepartmentCode(e.target.value)}
+                        value={departmentCode}
                         type="text"
                         name="street-address"
                         id="street-address"
@@ -271,9 +313,11 @@ export default function UserProfile() {
                         htmlFor="city"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        City
+                        Department
                       </label>
                       <input
+                        onChange={(e) => setDepartmentName(e.target.value)}
+                        value={departmentName}
                         type="text"
                         name="city"
                         id="city"
@@ -482,6 +526,7 @@ export default function UserProfile() {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
+                   onClick={handleSubmit}
                     type="submit"
                     className="inline-flex justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >

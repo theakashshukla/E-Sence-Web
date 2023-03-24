@@ -4,6 +4,7 @@ import { db } from "../firebase";
 
 
 function Student() {
+
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,9 +14,9 @@ function Student() {
       const users = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setUsers(users);
     }
-
     getUsers();
   }, []);
+  
 
   return (
     <div className="bg-gray-100">
