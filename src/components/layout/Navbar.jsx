@@ -3,23 +3,25 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
 
+
 const user = {
   name: "Akash",
   email: "User@test.com",
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
+
 const navigation = [
   { name: "Dashboard", href: "/" },
   { name: "Classes", href: "/Classes" },
-  { name: "Users", href: "/User" },
+  { name: "Users", href: "/Users" },
   { name: "Students", href: "/Student" },
   { name: "Report", href: "/Report" },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "/User" },
-  { name: "Settings", href: "/" },
-  { name: "Sign out", href: "/LogOut" },
+  { name: "Settings", href: "/Settings" },
+  { name: "Sign out", href: "/Logout" },
 ];
 
 function classNames(...classes) {

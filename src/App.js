@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from "./firebase"
 import Navbar from './components/layout/Navbar';
 import Dashboard from './pages/Dashboard';
 import LoginPage from "./utils/auth/Login";
@@ -9,17 +10,43 @@ import StudentList from "./utils/student/StudentListView";
 import UserProfile from './components/UserProfile';
 import Classes from './components/Classes';
 import Report from './components/Report';
-import LogOutModal from './utils/auth/LogOutModal';
+import LogoutModal from './utils/auth/LogoutModal';
 
-const auth = getAuth();
 
 export default function App() {
   const [user, setUser] = useState(null);
 
+  // Add security headers to the response
+  // useEffect(() => {
+  
+  //   // Security headers
+  //   this.headers = {
+  //     'Content-Security-Policy': "default-src 'self'",
+  //     'X-Frame-Options': 'SAMEORIGIN',
+  //     'X-XSS-Protection': '1; mode=block',
+  //     'X-Content-Type-Options': 'nosniff',
+  //     'Referrer-Policy': 'same-origin',
+  //     'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+  //   };
+
+  //   // Add the security headers to the response
+  //   const response = ({ headers }) => {
+  //     return {
+  //       headers: {
+  //         ...headers,
+  //         ...this.headers,
+  //       },
+  //     };
+  //   };
+
+  //   // Set the security headers on the response
+  //   Router.prototype.render = response;
+  // }, []);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("Hello", user)
+        // console.log("Hello", user)
         setUser(user);
       } else {
         setUser(null);
@@ -39,10 +66,9 @@ export default function App() {
       </div>
     );
   }
+
   return (
     <div className="app">
-
-
       <Router>
         <Navbar>
           <Routes>
@@ -51,7 +77,7 @@ export default function App() {
             <Route path="/Student" element={<StudentList />} />
             <Route path="/Report" element={<Report />} />
             <Route path="/Classes" element={<Classes />} />
-            <Route path="/LogOut" element={<LogOutModal />} />
+            <Route path="/Logout" element={<LogoutModal />} />
           </Routes>
         </Navbar>
       </Router>
@@ -59,56 +85,4 @@ export default function App() {
   );
 }
 
-// import { Routes, Route, NavLink } from 'react-router-dom';
-// import Dashboard from './pages/Dashboard';
-// import Student from './pages/Student';
-// import LoginPage from './utils/auth/Login';
-// import Report from './components/Report';
-
-// function Navigation() {
-//   const navigation = [
-//     { name: "Dashboard", path: "/", exact: true },
-//     { name: "Login", path: "/login" },
-//     { name: "Student", path: "/student" },
-//     { name: "Report", path: "/report" },
-//   ];
-
-//   return (
-//     <nav>
-//       {navigation.map((item) => (
-//         <NavLink
-//           key={item.name}
-//           to={item.path}
-//           activeClassName="bg-gray-900 text-white"
-//           exact={item.exact}
-//           className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-//         >
-//           {item.name}
-//         </NavLink>
-//       ))}
-//     </nav>
-//   );
-// }
-
-// export default function App() {
-//   return (
-//     <div>
-//       <header className="bg-white shadow">
-//         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-//           <Navigation />
-//         </div>
-//       </header>
-//       <main>
-//         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-//           <Routes>
-//             <Route exact path="/" component={<Dashboard/>} />
-//             <Route path="/login" component={<LoginPage/>} />
-//             <Route path="/student" component={<Student/>} />
-//             <Route path="/report" component={<Report/>} />
-//           </Routes>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
 
