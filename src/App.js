@@ -7,10 +7,11 @@ import Dashboard from './pages/Dashboard';
 import LoginPage from "./utils/auth/Login";
 import RegisterPage from "./utils/auth/Register";
 import StudentList from "./utils/student/StudentListView";
-import UserProfile from './components/UserProfile';
-import Classes from './components/Classes';
-import Report from './components/Report';
+import UserProfile from './pages/UserProfile';
+import Classes from './pages/Classes';
+import Report from './pages/Report';
 import LogoutModal from './utils/auth/LogoutModal';
+import Profile from './pages/Profile';
 
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
 
   // Add security headers to the response
   // useEffect(() => {
-  
+
   //   // Security headers
   //   this.headers = {
   //     'Content-Security-Policy': "default-src 'self'",
@@ -78,6 +79,7 @@ export default function App() {
             <Route path="/Report" element={<Report />} />
             <Route path="/Classes" element={<Classes />} />
             <Route path="/Logout" element={<LogoutModal />} />
+            <Route path="/Users" element={<Profile />} />
           </Routes>
         </Navbar>
       </Router>

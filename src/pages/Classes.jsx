@@ -1,31 +1,26 @@
 import { Fragment, useEffect, useState  } from "react";
-import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 import {
+  ClockIcon,
   BriefcaseIcon,
   CalendarIcon,
   CheckIcon,
   ChevronDownIcon,
-  CurrencyDollarIcon,
   LinkIcon,
   MapPinIcon,
   PencilIcon,
 } from "@heroicons/react/20/solid";
 import { Menu, Transition } from "@headlessui/react";
+import AddClassModal from "../components/add/AddClassModal";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
-
-const db = getFirestore();
  
-
- 
-
-
-
 export default function Classes() {
 
    const [classes, setClasses] = useState([]);
@@ -51,7 +46,11 @@ export default function Classes() {
 
    
   return (
-    <div >
+    <div>
+      <div className="flex flex-col space-y-4">
+        <AddClassModal />
+      
+      </div>
       {classes.map((classa) => (
         <div key={classa.Id}>
           <div className="lg:flex lg:items-center lg:justify-between m-9">
@@ -65,7 +64,7 @@ export default function Classes() {
                     className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                     aria-hidden="true"
                   />
-                  {classa.classTime}
+                  {classa.professor.name}
                 </div>
                 <div className="mt-2 flex items-center text-sm text-gray-500">
                   <MapPinIcon
@@ -75,11 +74,11 @@ export default function Classes() {
                   Remote
                 </div>
                 <div className="mt-2 flex items-center text-sm text-gray-500">
-                  <CurrencyDollarIcon
+                  <ClockIcon
                     className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                     aria-hidden="true"
                   />
-                  $120k &ndash; $140k
+                  {classa.timing.startTime} &ndash; {classa.timing.endTime}
                 </div>
                 <div className="mt-2 flex items-center text-sm text-gray-500">
                   <CalendarIcon

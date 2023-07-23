@@ -32,7 +32,7 @@ export default function UserProfile() {
       phone,
     });
 
-    // Add a new document in collection "cities"
+    // Add a new document in collection "users"
 
     try {
       const docRef = await addDoc(collection(db, "users"), {

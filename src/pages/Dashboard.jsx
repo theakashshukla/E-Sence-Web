@@ -1,19 +1,17 @@
-import AddProfessorModal from "../components/add/AddProfessorModal";
-import AddSubjectModal from "../components/add/AddSubjectModal";
-import AddClassModal from "../components/add/AddClassModal";
-import TestPro from "../components/add/TestPro";
-import ClassesForm from "../components/add/ClassForm";
-
+import StatsPage from "../components/stats/StatsPage";
+import StudentList from "../utils/student/StudentListView";
 
 export default function Dashboard() {
   return (
     <div>
-      <h1>Dashboard</h1>
-      <AddProfessorModal />
-      <AddSubjectModal />
-      <AddClassModal/>
-      <TestPro/>
-      <ClassesForm/>
+      <div className="flex flex-col lg:flex-row lg:space-x-4">
+        <div className="lg:w-1/2">
+          <StatsPage />
+        </div>
+        <div className="lg:w-1/2">
+          <StudentList />
+        </div>
+      </div>
     </div>
   );
 }

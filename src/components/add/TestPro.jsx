@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
 import { useCollection } from "react-firebase-hooks/firestore";
 import {
   getFirestore,
@@ -49,7 +50,14 @@ const TestPro = () => {
 
   return (
     <>
-      <button onClick={openModal}>Add Professor</button>
+      <div className="bg-white rounded-lg shadow-lg p-6">
+      <button
+        onClick={openModal}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        <FaPlus className="inline-block mr-2 mb-1" />
+        Add Professor
+      </button>
       {showModal && (
         <div className="fixed z-10 inset-0 overflow-y-auto">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -129,7 +137,8 @@ const TestPro = () => {
                           {departments &&
                             departments.docs.map((doc) => (
                               <option key={doc.id} value={doc.data().code}>
-                                {doc.data().department.name} ({doc.data().department.code})
+                                {doc.data().department.name} (
+                                {doc.data().department.code})
                               </option>
                             ))}
                         </select>
@@ -159,6 +168,7 @@ const TestPro = () => {
           </div>
         </div>
       )}
+      </div>
     </>
   );
 };
