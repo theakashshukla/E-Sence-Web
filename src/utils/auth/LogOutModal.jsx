@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 
-function LogoutModal() {
+export default function LogoutModal() {
   const [showModal, setShowModal] = useState(false);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function LogoutModal() {
     try {
       await logout();
       navigate.push("/");
-       console.log(currentUser);
+      console.log(currentUser);
     } catch (error) {
       console.log("Failed to logout", error);
     }
@@ -102,5 +102,3 @@ focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm
     </>
   );
 }
-
-export default LogoutModal;
