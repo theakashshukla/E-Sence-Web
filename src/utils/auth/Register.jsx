@@ -1,29 +1,43 @@
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   sendEmailVerification,
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { app } from "../../firebase";
+import { auth, db } from "../../firebase";
 
-
-
-const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const RegisterPage = () => {
+  const [name, setName] = useState({ first: "", last: "" });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signOut = () => {
-    auth
-      .signOut()
+    auth.signOut();
   };
-  
+
+  const checkIfUserExists = async (email) => {
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+      return signInMethods.length > 0;
+    } catch (error) {
+      console.error("Error checking if user exists:", error);
+      return false;
+    }
+  };
+
   const registerUser = async () => {
     try {
+      const userExists = await checkIfUserExists(email);
+      if (userExists) {
+        alert("User already exists");
+        return;
+      }
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -31,21 +45,60 @@ const RegisterPage = () => {
       );
       await sendEmailVerification(auth.currentUser);
       alert("Successfully created user and sent email verification");
+
+      const uid = userCredential.user.uid;
+      const docRef = await addDoc(collection(db, "users"), {
+        email,
+        uid,
+        password,
+        name: {
+          first: name.first,
+          last: name.last,
+        },
+      });
+      console.log("Document written with ID: ", docRef.id);
+
       const user = userCredential.user;
       if (!user.emailVerified) {
         // User is not verified, show error message and sign out the user
         signOut(auth);
+        // redirect to login page
         alert("Please verify your email before logging in.");
-      } 
+      }
     } catch (error) {
       alert(`Error creating user: ${error.message}`);
+      console.error("Error adding document: ", error);
     }
   };
 
   const signInWithGoogle = () => {
-    signInWithPopup(auth, googleProvider).then((value) =>
-      alert("Successfully signed in with Google")
-    );
+    signInWithPopup(auth, googleProvider)
+      .then(async (value) => {
+        const user = value.user;
+        const { uid, displayName, email } = user;
+        const [first, last] = displayName.split(" ");
+        const userExists = await checkIfUserExists(email);
+        if (userExists) {
+          alert("User already exists");
+          return;
+        } else {
+          // Check if user already exists in Firestore
+          const userData = {
+            uid,
+            email,
+            name: {
+              first,
+              last,
+            },
+          };
+          // Add user to Firestore
+          await setDoc(doc(db, "users", user.uid), userData);
+          console.log("User added to Firestore");
+        }
+      })
+      .catch((error) => {
+        console.error("Error signing in with Google: ", error.message);
+      });
   };
 
   return (
@@ -66,6 +119,30 @@ const RegisterPage = () => {
               <h1 class="font-bold text-center text-2xl mb-5">E-Sence</h1>
               <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                 <div class="px-5 py-7">
+                  <label class="font-semibold text-sm text-gray-600 pb-1 block">
+                    First Name
+                  </label>
+                  <input
+                    onChange={(e) =>
+                      setName({ ...name, first: e.target.value })
+                    }
+                    value={name.first}
+                    type="text"
+                    required
+                    placeholder="First Name"
+                    class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                  />
+                  <label class="font-semibold text-sm text-gray-600 pb-1 block">
+                    Last Name
+                  </label>
+                  <input
+                    onChange={(e) => setName({ ...name, last: e.target.value })}
+                    value={name.last}
+                    type="text"
+                    required
+                    placeholder="Last Name"
+                    class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+                  />
                   <label class="font-semibold text-sm text-gray-600 pb-1 block">
                     E-mail
                   </label>
@@ -101,9 +178,9 @@ const RegisterPage = () => {
                       class="w-4 h-4 inline-block"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
@@ -184,7 +261,6 @@ const RegisterPage = () => {
                           d="M11.044,11.703l0.775,0.646C13.154,11.158,14,9.43,14,7.5c0-0.169-0.013-0.334-0.025-0.5h-1 C12.99,7.165,13,7.331,13,7.5C13,9.187,12.239,10.694,11.044,11.703z"
                         ></path>
                       </svg>
-
                       Google
                     </button>
                     {/* <button
@@ -207,9 +283,9 @@ const RegisterPage = () => {
                           class="w-4 h-4 inline-block align-text-top"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
                           />
                         </svg>
@@ -227,9 +303,9 @@ const RegisterPage = () => {
                             class="w-4 h-4 inline-block align-text-bottom	"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
                             />
                           </svg>
@@ -253,9 +329,9 @@ const RegisterPage = () => {
                           class="w-4 h-4 inline-block align-text-top"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M10 19l-7-7m0 0l7-7m-7 7h18"
                           />
                         </svg>
@@ -312,9 +388,9 @@ const RegisterPage = () => {
                   class="w-4 h-4 inline-block"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
@@ -354,9 +430,9 @@ const RegisterPage = () => {
                       class="w-4 h-4 inline-block align-text-top"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
                       />
                     </svg>
@@ -373,9 +449,9 @@ const RegisterPage = () => {
                       class="w-4 h-4 inline-block align-text-bottom	"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
                       />
                     </svg>
@@ -397,9 +473,9 @@ const RegisterPage = () => {
                     class="w-4 h-4 inline-block align-text-top"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M10 19l-7-7m0 0l7-7m-7 7h18"
                     />
                   </svg>

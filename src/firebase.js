@@ -10,13 +10,13 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCn9SUTxUfEqUbPNd-gdG890093B6xDUac",
-  authDomain: "mcu-esence.firebaseapp.com",
-  projectId: "mcu-esence",
-  storageBucket: "mcu-esence.appspot.com",
-  messagingSenderId: "897477448641",
-  appId: "1:897477448641:web:481875f88e0ee428a55540",
-  measurementId: "G-PVYKXL1MTX"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId:process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 
@@ -24,6 +24,3 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-
-
-// const analytics = getAnalytics(app);

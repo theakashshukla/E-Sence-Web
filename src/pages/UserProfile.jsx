@@ -1,9 +1,7 @@
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { app } from "../firebase";
-
-const db = getFirestore(app);
+import { db } from "../firebase";
 
 export default function UserProfile() {
   const [name, setName] = useState("");
@@ -17,6 +15,25 @@ export default function UserProfile() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Update the user's profile information
+
+    const user = auth.currentUser;
+    const userRef = collection(db, "users", user.uid);
+    userRef.update({
+      name,
+      enrollment,
+      department: {
+        code: departmentCode,
+        name: departmentName,   
+      },
+      course,
+      email,
+      phone,
+    });
+
+    // Add a new document in collection "users"
+
     try {
       const docRef = await addDoc(collection(db, "users"), {
         name,

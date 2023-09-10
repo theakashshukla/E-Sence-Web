@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
-
 function Student() {
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -16,7 +14,6 @@ function Student() {
     }
     getUsers();
   }, []);
-  
 
   return (
     <div className="bg-gray-100">
