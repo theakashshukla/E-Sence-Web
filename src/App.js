@@ -10,7 +10,7 @@ import StudentList from "./utils/student/StudentListView";
 import UserProfile from './pages/UserProfile';
 import Classes from './pages/Classes';
 import Report from './pages/Report';
-import LogoutModal from './utils/auth/LogoutModal';
+// import LogoutModal from './utils/auth/LogoutModal';
 import Profile from './pages/Profile';
 
 
@@ -78,7 +78,7 @@ export default function App() {
             <Route path="/Student" element={<StudentList />} />
             <Route path="/Report" element={<Report />} />
             <Route path="/Classes" element={<Classes />} />
-            <Route path="/Logout" element={<LogoutModal />} />
+            {/* <Route path="/Logout" element={<LogoutModal />} /> */}
             <Route path="/Users" element={<Profile />} />
           </Routes>
         </Navbar>

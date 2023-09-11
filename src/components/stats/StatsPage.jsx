@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
-import { collection, getDocs, where, QuerySnapshot } from "firebase/firestore";
+// import { collection, getDocs, where, QuerySnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 // Define the ViewModel
 class StatsViewModel {
@@ -49,7 +50,7 @@ class StatsViewModel {
     const studentList = await this.getStudentList();
     const classList = await this.getClassList();
 
-    const today = new Date().toISOString().split("T")[0];
+    // const today = new Date().toISOString().split("T")[0];
 
     // Count present students
     this.studentCount = studentList.length;
@@ -66,13 +67,13 @@ class StatsViewModel {
     this.classCount = classList.length;
 
     // Count students on all runinng leave
-    const leaveStudents = studentList.filter(
-      (student) =>
-        student.enrollmentNo in classList &&
-        classList[student.enrollmentNo].date <= today &&
-        classList[student.enrollmentNo].attendance === 0
+    // const leaveStudents = studentList.filter(
+    //   (student) =>
+    //     student.enrollmentNo in classList &&
+    //     classList[student.enrollmentNo].date <= today &&
+    //     classList[student.enrollmentNo].attendance === 0
 
-    );
+    // );
   }
 }
 
@@ -87,28 +88,29 @@ function StatsPage() {
     }
 
     fetchStats();
-  }, []);
+  }, );
+  // }, []);
 
   const handleStudentClick = async () => {
-    const studentList = await viewModel.getStudentList();
+    // const studentList = await viewModel.getStudentList();
     // Render the student list component
 
   };
 
   const handleClassClick = async () => {
-    const classList = await viewModel.getClassList();
+    // const classList = await viewModel.getClassList();
     // Render the class list component
 
   };
 
   const handleAbsentClick = async () => {
-    const studentList = await viewModel.getStudentList();
+    // const studentList = await viewModel.getStudentList();
     // Render the absent student list component
 
   };
 
   const handleLeaveClick = async () => {
-    const studentList = await viewModel.getStudentList();
+    // const studentList = await viewModel.getStudentList();
     // Render the leave student list component
 
   };
