@@ -16,9 +16,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -41,26 +40,26 @@ jobs:
           echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}" >> $GITHUB_ENV
           echo "FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
 
-    - name: Debug Enviorment Variable
-      run: |
-          echo "FIREBASE_API_KEY=$FIREBASE_API_KEY"
-          echo "FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN"
-          echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID"
-          echo "FIREBASE_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET"
-          echo "FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID"
-          echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
-          echo "FIREBASE_MEASUREMENT_ID=$FIREBASE_MEASUREMENT_ID"
+    # - name: Debug Enviorment Variable
+    #   run: |
+    #       echo "FIREBASE_API_KEY=$FIREBASE_API_KEY"
+    #       echo "FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN"
+    #       echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID"
+    #       echo "FIREBASE_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET"
+    #       echo "FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID"
+    #       echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
+    #       echo "FIREBASE_MEASUREMENT_ID=$FIREBASE_MEASUREMENT_ID"
 
     - name: Test
-      run:
-      # run: |
-      #   echo "FIREBASE_API_KEY=$FIREBASE_API_KEY"
-      #   echo "FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN"
-      #   echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID"
-      #   echo "FIREBASE_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET"
-      #   echo "FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID"
-      #   echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
-      #   echo "FIREBASE_MEASUREMENT_ID=$FIREBASE_MEASUREMENT_ID"
-      #   # add other Firebase config variables here
+      # run:
+      run: |
+        echo "FIREBASE_API_KEY=$FIREBASE_API_KEY"
+        echo "FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN"
+        echo "FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID"
+        echo "FIREBASE_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET"
+        echo "FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID"
+        echo "FIREBASE_APP_ID=$FIREBASE_APP_ID"
+        echo "FIREBASE_MEASUREMENT_ID=$FIREBASE_MEASUREMENT_ID"
+        
         npm test
     

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState  } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -15,41 +15,36 @@ import {
 import { Menu, Transition } from "@headlessui/react";
 import AddClassModal from "../components/add/AddClassModal";
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
- 
 export default function Classes() {
+  const [classes, setClasses] = useState([]);
 
-   const [classes, setClasses] = useState([]);
-
-   useEffect(() => {
-     async function getClasses() {
-       const usersRef = query(
-         collection(db, "classes")
+  useEffect(() => {
+    async function getClasses() {
+      const usersRef = query(
+        collection(db, "classes")
         //  ,
         //  where("active", "==", true)
-       );
-       const snapshot = await getDocs(usersRef);
-       const classes = snapshot.docs.map((doc) => ({
-         id: doc.id,
-         ...doc.data(),
-       }));
-       setClasses(classes);
-       console.log(classes);  
-     }
+      );
+      const snapshot = await getDocs(usersRef);
+      const classes = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setClasses(classes);
+      console.log(classes);
+    }
 
-     getClasses();
-   }, []);
+    getClasses();
+  }, []);
 
-   
   return (
     <div>
       <div className="flex flex-col space-y-4">
         <AddClassModal />
-      
       </div>
       {classes.map((classa) => (
         <div key={classa.Id}>

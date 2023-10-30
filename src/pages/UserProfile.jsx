@@ -12,7 +12,6 @@ export default function UserProfile() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -25,7 +24,7 @@ export default function UserProfile() {
       enrollment,
       department: {
         code: departmentCode,
-        name: departmentName,   
+        name: departmentName,
       },
       course,
       email,
@@ -121,7 +120,6 @@ export default function UserProfile() {
                         type="text"
                         onChange={(e) => setCourse(e.target.value)}
                         value={course}
-                      
                         className="mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
                         placeholder="Course"
                         defaultValue={""}
@@ -259,7 +257,7 @@ export default function UserProfile() {
                       >
                         Name
                       </label>
-                      <input 
+                      <input
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         type="text"
@@ -543,7 +541,7 @@ export default function UserProfile() {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                   <button
-                   onClick={handleSubmit}
+                    onClick={handleSubmit}
                     type="submit"
                     className="inline-flex justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >

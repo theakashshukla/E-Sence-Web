@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useCollection } from "react-firebase-hooks/firestore";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
-
 
 const AddSubjectModal = () => {
   const [subject, setSubject] = useState({ name: "", code: "" });
@@ -15,7 +10,6 @@ const AddSubjectModal = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
 
   const departmentsRef = collection(db, "departments");
   const [departments] = useCollection(departmentsRef);
@@ -40,8 +34,6 @@ const AddSubjectModal = () => {
     setSubject({ name: "", code: "" });
   };
 
-  
-
   const openModal = () => {
     setShowModal(true);
   };
@@ -49,7 +41,6 @@ const AddSubjectModal = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-  
 
   return (
     <>

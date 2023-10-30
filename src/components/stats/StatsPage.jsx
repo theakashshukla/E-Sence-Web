@@ -88,57 +88,55 @@ function StatsPage() {
     }
 
     fetchStats();
-  }, );
+  });
   // }, []);
 
   const handleStudentClick = async () => {
     // const studentList = await viewModel.getStudentList();
     // Render the student list component
-
   };
 
   const handleClassClick = async () => {
     // const classList = await viewModel.getClassList();
     // Render the class list component
-
   };
 
   const handleAbsentClick = async () => {
     // const studentList = await viewModel.getStudentList();
     // Render the absent student list component
-
   };
 
   const handleLeaveClick = async () => {
     // const studentList = await viewModel.getStudentList();
     // Render the leave student list component
-
   };
 
-
-
   return (
-    <div >
+    <div>
       <div className="flex flex-wrap justify-center gap-4">
-        <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
+        <div
+          className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
           onClick={handleStudentClick}
         >
           <div className="text-lg font-medium">Present</div>
           <div className="text-3xl font-bold">{viewModel.studentCount}</div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
+        <div
+          className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
           onClick={handleAbsentClick}
         >
           <div className="text-lg font-medium">Absent</div>
           <div className="text-3xl font-bold">{viewModel.absentCount}</div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
+        <div
+          className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
           onClick={handleClassClick}
         >
           <div className="text-lg font-medium">Classes</div>
           <div className="text-3xl font-bold">{viewModel.classCount}</div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
+        <div
+          className="bg-white p-6 rounded-lg shadow-md cursor-pointer w-64"
           onClick={handleLeaveClick}
         >
           <div className="text-lg font-medium">Leave</div>
@@ -148,6 +146,5 @@ function StatsPage() {
     </div>
   );
 }
-
 
 export default StatsPage;

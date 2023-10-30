@@ -72,13 +72,13 @@ const AddClassModal = () => {
     <>
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-end">
-        <button
-          onClick={openModal}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          <FaPlus className="inline-block mr-2 mb-1" />
-          Add Class
-        </button>
+          <button
+            onClick={openModal}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            <FaPlus className="inline-block mr-2 mb-1" />
+            Add Class
+          </button>
         </div>
         {showModal && (
           <div className="fixed z-10 inset-0 overflow-y-auto">

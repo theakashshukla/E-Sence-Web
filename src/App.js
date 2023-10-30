@@ -1,18 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from "./firebase"
-import Navbar from './components/layout/Navbar';
-import Dashboard from './pages/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import Navbar from "./components/layout/Navbar";
+import Dashboard from "./pages/Dashboard";
 import LoginPage from "./utils/auth/Login";
 import RegisterPage from "./utils/auth/Register";
 import StudentList from "./utils/student/StudentListView";
-import UserProfile from './pages/UserProfile';
-import Classes from './pages/Classes';
-import Report from './pages/Report';
+import UserProfile from "./pages/UserProfile";
+import Classes from "./pages/Classes";
+import Report from "./pages/Report";
 // import LogoutModal from './utils/auth/LogoutModal';
-import Profile from './pages/Profile';
-
+import Profile from "./pages/Profile";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -86,5 +85,3 @@ export default function App() {
     </div>
   );
 }
-
-
