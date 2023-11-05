@@ -256,6 +256,7 @@ export default function SidePage() {
                   </ul>
                 </nav>
               </div>
+              
               <div className="flex flex-shrink-0 p-4 px-4 bg-neutral-900">
                 <a href="#" className="flex-shrink-0 block w-full group">
                   <div className="flex items-center">
