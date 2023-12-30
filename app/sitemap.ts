@@ -3,19 +3,19 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://esence.vercel.app',
+      url: 'https://esence.astreak.in',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: 'https://esence.vercel.app/about',
+      url: 'https://esence.astreak.in/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://esence.vercel.app/pricing',
+      url: 'https://esence.astreak.in/pricing',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,

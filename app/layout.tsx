@@ -1,36 +1,41 @@
 import "@/styles/globals.css";
-
+import { Metadata } from "next";
 import { fontSans, fontHeading } from "./assets/fonts";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    "Institution",
+    "SASS Platform",
+    "Collge Management",
+    "CMS",
+    "School Management",
+    "School",
+    "College",
   ],
   authors: [
     {
-      name: "akash",
-      url: "https://theakashshukla.gitub.io",
+      name: "Astreak",
+      url: "https://astreak.in/",
     },
   ],
-  creator: "akash",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  publisher: "Astreak",
   openGraph: {
+    image:{
+      url: `${siteConfig.url}/og.jpg`,
+      width: 1200,
+      height: 630,
+      alt: siteConfig.name,
+    },
     type: "website",
     locale: "en_US",
     url: siteConfig.url,

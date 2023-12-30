@@ -56,7 +56,7 @@ const components: { title: string; href: string; description: string }[] = [
 export default function NavMenu() {
   return (
     <div>
-      <header className="relative flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
+      <header className="relative flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-slate-900">
         <nav
           className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
           aria-label="Global"
@@ -75,7 +75,7 @@ export default function NavMenu() {
 
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
+              <NavigationMenuItem >
                 <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -134,7 +134,7 @@ export default function NavMenu() {
           </NavigationMenu>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
-              href="#"
+              href="/login"
               className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100"
             >
               Log in <span aria-hidden="true">&rarr;</span>

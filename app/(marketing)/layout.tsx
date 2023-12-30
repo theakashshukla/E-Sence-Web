@@ -1,9 +1,5 @@
-import Link from "next/link"
-
 import Footer from "@/components/layout/footer"
 import NavMenu from "@/components/nav-menu"
-
-
 
 interface MarketingLayoutProps {
   children: React.ReactNode
