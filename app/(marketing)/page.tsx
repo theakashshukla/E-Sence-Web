@@ -90,7 +90,7 @@ export default function Home() {
               {/* Icon */}
               <div className="space-y-2">
                 <h3 className="font-bold">Fees Management</h3>
-                <p className="text-sm">
+                <p className="text-sm text-muted-foreground">
                   Manage fees of all students and generate fees receipt.
                 </p>
               </div>

@@ -9,12 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://esence.astreak.in/about',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: 'https://esence.astreak.in/pricing',
       lastModified: new Date(),
       changeFrequency: 'weekly',
