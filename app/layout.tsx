@@ -5,7 +5,6 @@ import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   ],
   publisher: "Astreak",
   openGraph: {
-    image:{
+    images: {
       url: `${siteConfig.url}/og.jpg`,
       width: 1200,
       height: 630,
