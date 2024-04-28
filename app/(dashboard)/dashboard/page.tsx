@@ -1,4 +1,4 @@
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 // import { authOptions } from "@/lib/auth"
 // import { db } from "@/lib/db"
@@ -17,6 +17,7 @@ export default async function DashboardPage() {
     <DashboardShell>
       <DashboardHeader heading="Posts" text="Create and manage posts.">
         {/* <PostCreateButton /> */}
+        
       </DashboardHeader>
 
     </DashboardShell>

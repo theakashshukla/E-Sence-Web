@@ -1,3 +1,3 @@
 export default async function SettingPage() {
-    return (<></>)
+    return (<><h1>Setting</h1></>)
 }

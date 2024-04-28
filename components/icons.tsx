@@ -24,6 +24,7 @@ import {
   User,
   X,
   LucideIcon,
+  LayoutDashboard,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -35,6 +36,7 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   trash: Trash,
+  dashboard: LayoutDashboard,
   post: FileText,
   page: File,
   media: Image,
