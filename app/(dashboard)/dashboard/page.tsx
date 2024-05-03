@@ -38,7 +38,7 @@ export default async function DashboardPage() {
             Hi, Welcome back 👋
           </h2>
           <div className="hidden md:flex items-center space-x-2">
-            <CalendarDateRangePicker />
+            {/* <CalendarDateRangePicker /> */}
             <Button>Download</Button>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default async function DashboardPage() {
                   <CardTitle>Overview</CardTitle>
                 </CardHeader>
                 <CardContent className="pl-2">
-                  <Overview />
+                  {/* <Overview /> */}
                 </CardContent>
               </Card>
               <Card className="col-span-4 md:col-span-3">
@@ -170,7 +170,7 @@ export default async function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <RecentSales />
+                  {/* <RecentSales /> */}
                 </CardContent>
               </Card>
             </div>
