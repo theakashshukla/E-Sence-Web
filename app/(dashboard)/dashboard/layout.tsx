@@ -3,7 +3,10 @@
 import { dashboardConfig } from "@/config/dashboard";
 // import { getCurrentUser } from "@/lib/session"
 // import { MainNav } from "@/components/main-nav"
-import { DashboardNav } from "@/components/nav";
+import { DashboardNav } from "@/components/layout/dashboard/nav";
+import { cn } from "@/lib/utils";
+import { MobileSidebar } from "@/components/layout/dashboard/mobile-nav";
+import HeaderNav from "@/components/layout/dashboard/header-nav";
 // import { SiteFooter } from "@/components/site-footer"
 // import { UserAccountNav } from "@/components/user-account-nav"
 
@@ -19,21 +22,44 @@ export default async function DashboardLayout({
   //     return notFound()
 
   return (
-    <div className="flex min-h-screen  flex-col space-y-6">
-      <header className="sticky top-0 z-40 border-b bg-background">
-        <div className="container flex h-16 items-center justify-between py-4">
-          <h1>This is Nav</h1>
-        </div>
-      </header>
-      <div className="grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-        <aside className="hidden container w-[200px] flex-col md:flex">
-          <DashboardNav items={dashboardConfig.sidebarNav} />
+    <>
+      <HeaderNav />
+      <div className="flex h-screen overflow-hidden">
+        <aside
+          className={cn(
+            `relative hidden h-screen border-r pt-16 lg:block w-72`
+          )}
+        >
+          <div className="space-y-4 py-4">
+            <div className="px-3 py-2">
+              <div className="space-y-1">
+                <h2 className="mb-2 px-4 text-xl font-semibold tracking-tight">
+                  Overview
+                </h2>
+                <DashboardNav items={dashboardConfig.sidebarNav} />
+              </div>
+            </div>
+          </div>
         </aside>
-
-        <main className="flex w-full flex-1 flex-col overflow-hidden">
-          {children}
-        </main>
+        <main className="w-full pt-16">{children}</main>
       </div>
-    </div>
+    </>
+
+    // <div className="flex min-h-screen flex-col space-y-6">
+    //   <div className="grid flex-1 md:grid-cols-[200px_1fr] ">
+    //     <aside className="hidden container w-[200px] flex-col md:flex border-e">
+    //       <DashboardNav items={dashboardConfig.sidebarNav} />
+    //     </aside>
+
+    //     <main className="flex w-full flex-1 flex-col overflow-hidden">
+    //       {/* <header className="sticky top-0 z-40 border-b bg-background">
+    //     <div className="container flex h-16 items-center justify-between py-4">
+    //       <h1>This is Nav</h1>
+    //     </div>
+    //   </header> */}
+    //       {children}
+    //     </main>
+    //   </div>
+    // </div>
   );
 }

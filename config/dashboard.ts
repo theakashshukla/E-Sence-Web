@@ -16,28 +16,28 @@ export const dashboardConfig: DashboardConfig = {
     {
       title: "Dashoboard",
       href: "/dashboard",
-      icon: "post",
+      icon: "dashboard",
     },
     
     {
       title: "Classes",
       href: "/dashboard/classes",
-      icon: "settings",
+      icon: "classes",
     },
     {
       title: "Department",
       href: "/dashboard/department",
-      icon: "settings",
+      icon: "building",
     },
     {
       title: "Student",
       href: "/dashboard/student",
-      icon: "settings",
+      icon: "users",
     },
     {
       title: "Courses",
       href: "/dashboard/courses",
-      icon: "settings",
+      icon: "course",
     },
     {
       title: "Settings",

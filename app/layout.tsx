@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import { Metadata } from "next";
 import { fontSans, fontHeading } from "./assets/fonts";
 import { siteConfig } from "@/config/site";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/ThemeToggle/theme-provider";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {

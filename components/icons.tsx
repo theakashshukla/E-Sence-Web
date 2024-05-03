@@ -25,6 +25,11 @@ import {
   X,
   LucideIcon,
   LayoutDashboard,
+  Users2,
+  Building,
+  GraduationCap,
+  SquareLibrary,
+  MenuIcon,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -46,11 +51,16 @@ export const Icons = {
   add: Plus,
   warning: AlertTriangle,
   user: User,
+  users: Users2,
+  classes: GraduationCap,
+  course: SquareLibrary,
+  building: Building,
   arrowRight: ArrowRight,
   help: HelpCircle,
   pizza: Pizza,
   sun: SunMedium,
   moon: Moon,
+  menu: MenuIcon,
   laptop: Laptop,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
