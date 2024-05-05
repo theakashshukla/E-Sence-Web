@@ -8,11 +8,14 @@ export default function Home() {
   return (
     <div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-      <div aria-hidden="true" className="absolute top-0 left-0 w-full h-full">
+      {/* <div aria-hidden="true" className="absolute top-0 left-0 w-full h-full">
   <div className="bg-purple-200 opacity-30 blur-3xl w-2/3 h-2/3"></div>
-  <div className="bg-slate-200 opacity-90 blur-3xl w-1/3 h-1/3 transform translate-y-32"></div>
-</div>
-
+  <div className="bg-purple-200 opacity-90 blur-3xl w-1/3 h-1/3 transform translate-y-32"></div>
+</div> */}
+<div aria-hidden="true" className="absolute -top-48 left-0 -z-[1]">
+          <div className="bg-purple-200 opacity-30 blur-3xl w-[1036px] h-[600px] dark:bg-purple-900 dark:opacity-20"></div>
+          <div className="bg-slate-200 opacity-90 blur-3xl w-[577px] h-[300px] transform translate-y-32 dark:bg-slate-800/60"></div>
+        </div>
 
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link

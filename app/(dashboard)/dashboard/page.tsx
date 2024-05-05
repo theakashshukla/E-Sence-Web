@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,9 +15,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 // import { db } from "@/lib/db"
 // import { getCurrentUser } from "@/lib/session"
 // import { EmptyPlaceholder } from "@/components/empty-placeholder"
-import { DashboardHeader } from "@/components/layout/marketing/header";
+// import { DashboardHeader } from "@/components/layout/marketing/header";
 // import { PostCreateButton } from "@/components/post-create-button"
-import { DashboardShell } from "@/components/shell";
+// import { DashboardShell } from "@/components/shell";
 
 
 export const metadata = {

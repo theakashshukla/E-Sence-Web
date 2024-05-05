@@ -7,8 +7,9 @@ import { Icons } from "@/components/icons";
 
 export function Features() {
   return (
-    <section className="container space-y-6 bg-transparent border rounded-2xl my-8 py-8 dark:bg-transparent md:py-12 lg:py-24">
-      <div className="pb-6 ">
+    <section>
+     {/* <section className="container space-y-6 bg-transparent border-2 rounded-2xl my-8 py-8 dark:bg-transparent md:py-12 lg:py-24 shadow-sm"> */}
+      <div className="pb-6 my-12">
         <div className="container max-w-6xl">
           <HeaderSection
             label="Features"
