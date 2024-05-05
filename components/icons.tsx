@@ -30,6 +30,7 @@ import {
   GraduationCap,
   SquareLibrary,
   MenuIcon,
+  ArrowUpRight,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -56,6 +57,7 @@ export const Icons = {
   course: SquareLibrary,
   building: Building,
   arrowRight: ArrowRight,
+  arrowUpRight: ArrowUpRight,
   help: HelpCircle,
   pizza: Pizza,
   sun: SunMedium,

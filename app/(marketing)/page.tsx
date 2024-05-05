@@ -1,18 +1,18 @@
 import Link from "next/link";
-
-// import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { Features } from "@/components/page/home/feature";
 
 export default function Home() {
   return (
     <div>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div aria-hidden="true" className="absolute -top-48 left-0 -z-[1]">
-          <div className="bg-purple-200 opacity-30 blur-3xl w-[1036px] h-[600px] dark:bg-purple-900 dark:opacity-20"></div>
-          <div className="bg-slate-200 opacity-90 blur-3xl w-[577px] h-[300px] transform translate-y-32 dark:bg-slate-800/60"></div>
-        </div>
+      <div aria-hidden="true" className="absolute top-0 left-0 w-full h-full">
+  <div className="bg-purple-200 opacity-30 blur-3xl w-2/3 h-2/3"></div>
+  <div className="bg-slate-200 opacity-90 blur-3xl w-1/3 h-1/3 transform translate-y-32"></div>
+</div>
+
 
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <Link
@@ -59,98 +59,10 @@ export default function Home() {
           />
         </div>
       </section>
-      <section
-        id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent  md:py-12 lg:py-24"
-      >
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Astreak is providing a full-featured Cloud based SaaS solution for
-            managing all aspects of your Institution. It is a complete solution
-            for your Institution.
-          </p>
-        </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Multiple Institution</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manage multiple institutions from a single account.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Fees Management</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manage fees of all students and generate fees receipt.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Attendance</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manage attendance of all students and generate attendance
-                  report.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Examination</h3>
-                <p className="text-sm text-muted-foreground">
-                  Manage examination and generate examination report.
-                  CSS.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Multiplatform</h3>
-                <p className="text-sm text-muted-foreground">
-                  Access your account from any device.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              {/* Icon */}
-              <div className="space-y-2">
-                <h3 className="font-bold">Secure</h3>
-                <p className="text-sm text-muted-foreground">
-                  We take security seriously. All your data is encrypted.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto text-center md:max-w-[58rem]">
-          <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            We are constantly working on new features and improvements to make
-            your experience better. If you have any suggestions or feedback,
-            please let us know.
-          </p>
-        </div>
-      </section>
+     
+        <Features/>
+        
+      
     </div>
   );
 }
