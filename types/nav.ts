@@ -23,6 +23,7 @@
     disabled?: boolean
     external?: boolean
     icon?: keyof typeof Icons
+    subSidebarNav?: SubNavItem[]
   } & (
     | {
         href: string
@@ -40,6 +41,22 @@
     disabled?: boolean
     external?: boolean
   }
+
+  export type SubNavItem = {
+    title: string
+    disabled?: boolean
+    external?: boolean
+    icon?: keyof typeof Icons
+  }  & (
+    | {
+        href: string
+        items?: never
+      }
+    | {
+        href?: string
+        items: NavItem[]
+      }
+  )
   
   export type SiteConfig = {
     name: string
@@ -65,6 +82,7 @@
     mainNav: MainNavItem[]
     sidebarNav: SidebarNavItem[]
     footerNav: FooterNavItem[]
+
   }
   
   export type SubscriptionPlan = {
