@@ -7,6 +7,7 @@ import { DashboardNav } from "@/components/layout/dashboard/nav";
 import { cn } from "@/lib/utils";
 import { MobileSidebar } from "@/components/layout/dashboard/mobile-nav";
 import HeaderNav from "@/components/layout/dashboard/header-nav";
+import { CloseNav } from "@/components/layout/dashboard/close-nav";
 // import { SiteFooter } from "@/components/site-footer"
 // import { UserAccountNav } from "@/components/user-account-nav"
 
@@ -23,25 +24,18 @@ export default async function DashboardLayout({
 
   return (
     <>
-      <HeaderNav />
-      <div className="flex h-screen overflow-hidden">
-        <aside
-          className={cn(
-            `relative hidden h-screen border-r pt-16 lg:block w-72`
-          )}
-        >
-          <div className="space-y-4 py-4">
-            <div className="px-3 py-2">
-              <div className="space-y-1">
-                <h2 className="mb-2 px-4 text-xl font-semibold tracking-tight">
-                  Overview
-                </h2>
-                <DashboardNav items={dashboardConfig.sidebarNav} />
-              </div>
-            </div>
-          </div>
-        </aside>
-        <main className="w-full pt-16">{children}</main>
+      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+        {/* <div className="flex h-screen overflow-hidden"> */}
+        <DashboardNav items={dashboardConfig.sidebarNav} />
+        {/* <CloseNav items={dashboardConfig.sidebarNav} /> */}
+        <div className="flex flex-col">
+        <HeaderNav />
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+          {children}
+        </main>
+        </div>
+
+        {/* <main className="w-full pt-16">{children}</main> */}
       </div>
     </>
 
